@@ -1,4 +1,4 @@
-package config;
+package ru.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -13,7 +13,7 @@ public class MySpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotation
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{config.SpringConfig.class};
+        return new Class[]{SpringConfig.class};
     }
 
     @Override
