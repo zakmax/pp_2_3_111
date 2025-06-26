@@ -1,14 +1,14 @@
 package ru.models;
 
-public class Person {
+public class User {
     private int id;
     private String name;
 
 
-    public Person(){
+    public User(){
 
     }
-    public Person(int id, String name) {
+    public User(int id, String name) {
         this.id = id;
         this.name = name;
     }
