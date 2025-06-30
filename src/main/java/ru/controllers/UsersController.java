@@ -7,27 +7,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.dao.UserDAO;
 import ru.models.User;
+import ru.service.UserService;
+
 @Controller
 @RequestMapping("/users")
 public class UsersController {
 
-    private final UserDAO userDAO;
+    private final UserService userService;
 
     @Autowired
-    public UsersController(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public UsersController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("users", userDAO.index());
+        model.addAttribute("users", userService.index());
         return "users/index";
     }
 
 
     @GetMapping("/show")
     public String show(@RequestParam("id") int id, Model model) {
-        model.addAttribute("user", userDAO.show(id));
+        model.addAttribute("user", userService.show(id));
         return "users/show";
     }
 
@@ -38,28 +40,28 @@ public class UsersController {
 
     @PostMapping()
     public String create(@ModelAttribute("user") User user) {
-        userDAO.save(user);
+        userService.save(user);
         return "redirect:/users";
     }
 
 
     @GetMapping("/edit")
     public String edit(Model model, @RequestParam("id") int id) {
-        model.addAttribute("user", userDAO.show(id));
+        model.addAttribute("user", userService.show(id));
         return "users/edit";
     }
 
 
     @PostMapping("/update")
     public String update(@ModelAttribute("user") User user, @RequestParam("id") int id) {
-        userDAO.update(id, user);
+        userService.update(id, user);
         return "redirect:/users";
     }
 
 
     @PostMapping("/delete")
     public String delete(@RequestParam("id") int id) {
-        userDAO.delete(id);
+        userService.delete(id);
         return "redirect:/users";
     }
 }
