@@ -12,8 +12,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -53,7 +51,6 @@ public class HIbernateConfig {
     }
 
     @Bean
-
     public JpaTransactionManager transactionManager() {
 
         JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -64,9 +61,6 @@ public class HIbernateConfig {
 
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
-
         return new PersistenceExceptionTranslationPostProcessor();
     }
-
-
 }
